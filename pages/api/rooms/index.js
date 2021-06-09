@@ -5,10 +5,10 @@ import {
   getAllRooms,
   getSingleRoom,
 } from "../../../controllers/roomController";
+import onError from "../../../middlewares/errors";
 
-const handler = nc();
+const handler = nc({ onError });
 dbConnect();
-
 
 handler.get(getAllRooms);
 handler.get(getSingleRoom);
