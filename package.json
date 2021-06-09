@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev -p 8080",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "seeder": "node utils/seeder"
   },
   "dependencies": {
     "@chakra-ui/react": "^1.6.3",
