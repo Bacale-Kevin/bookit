@@ -1,18 +1,28 @@
-import {
-  Link as ChakraLink,
-  Text,
-  Code,
-  List,
-  ListIcon,
-  ListItem,
-} from "@chakra-ui/react";
-// import { CheckCircleIcon, LinkIcon } from "@chakra-ui/icons";
-// import { Container } from "../components/Container";
-// import { Main } from "../components/Main";
-// import { DarkModeSwitch } from "../components/DarkModeSwitch";
-// import { CTA } from "../components/CTA";
-// import { Footer } from "../components/Footer";
+import Home from "../components/Home";
+import Layout from "../components/layout/Layout";
 
-const Index = () => <>Home</>;
+import { getRooms } from "../redux/actions/roomActions";
 
-export default Index;
+import { wrapper } from "../redux/store";
+
+export default function Index() {
+  return (
+    <>
+      <Layout>
+        <Home />
+      </Layout>
+    </>
+  );
+}
+
+export const getServerSideProps = wrapper.getServerSideProps(async ({ req, store }) => {
+  try {
+    // const { store } = ctx;
+    console.log("Store --> ", req);
+    console.log("Store --> ", store);
+
+    await store.dispatch(getRooms(req));
+  } catch (error) {
+    console.log({ ERROR_: error.message });
+  }
+});
