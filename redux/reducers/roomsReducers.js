@@ -3,19 +3,19 @@ import {
   ALL_ROOMS_SUCCESS,
   CLEAR_ERRORS,
 } from "../constants/roomsConstants";
-import { HYDRATE } from "next-redux-wrapper";
+// import { HYDRATE } from "next-redux-wrapper";
 
 //All rooms reducer
-export const allRoomReducer = (state = { rooms: [] }, action) => {
+export const allRoomsReducer = (state = { rooms: [] }, action) => {
   switch (action.type) {
-    case HYDRATE:
-      return { ...state, ...action.payload };
+    // case HYDRATE:
+    //   return { ...state, ...action.payload };
     case ALL_ROOMS_SUCCESS:
       return {
-        roomCount: action.payload.roomCount,
+        roomsCount: action.payload.roomsCount,
         resPerPage: action.payload.resPerPage,
         filteredRoomsCount: action.payload.filteredRoomsCount,
-        rooms: actions.payload.rooms,
+        rooms: action.payload.rooms,
       };
 
     case ALL_ROOMS_FAIL:

@@ -4,6 +4,7 @@ import Layout from "../components/layout/Layout";
 import { getRooms } from "../redux/actions/roomActions";
 
 import { wrapper } from "../redux/store";
+// import { getServerSideProps } from './../.next/static/webpack/pages/index.40ee0db5ea6396513a37.hot-update';
 
 export default function Index() {
   return (
@@ -15,14 +16,14 @@ export default function Index() {
   );
 }
 
-export const getServerSideProps = wrapper.getServerSideProps(async ({ req, store }) => {
+
+export const getServerSideProps = wrapper.getServerSideProps(store => async ({ req }) => {
   try {
-    // const { store } = ctx;
-    console.log("Store --> ", req);
-    console.log("Store --> ", store);
 
     await store.dispatch(getRooms(req));
   } catch (error) {
     console.log({ ERROR_: error.message });
   }
-});
+})
+
+
