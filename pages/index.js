@@ -16,11 +16,10 @@ export default function Index() {
   );
 }
 
-
-export const getServerSideProps = wrapper.getServerSideProps(store => async ({ req }) => {
+//next redux wrapper version 7.0.0 takes in the store before returning the state
+export const getServerSideProps = wrapper.getServerSideProps(store => async ({ req, query }) => {
   try {
-
-    await store.dispatch(getRooms(req));
+    await store.dispatch(getRooms(req, query.page));
   } catch (error) {
     console.log({ ERROR_: error.message });
   }

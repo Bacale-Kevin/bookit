@@ -10,7 +10,7 @@ const getAllRooms = catchAsyncErrors(async (req, res) => {
   const roomsCount = await Room.countDocuments(); //return the total number of rooms
 
   const apiFeatures = new APIFeatures(Room.find(), req.query).search().filter();
-  console.log(req.query)
+  
   let rooms = await apiFeatures.mongooseQuery; //equivalent to await Room.find()
 
   let filteredRoomsCount = rooms.length;
