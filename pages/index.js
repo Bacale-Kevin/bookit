@@ -19,7 +19,13 @@ export default function Index() {
 //next redux wrapper version 7.0.0 takes in the store before returning the state
 export const getServerSideProps = wrapper.getServerSideProps(store => async ({ req, query }) => {
   try {
-    await store.dispatch(getRooms(req, query.page));
+    await store.dispatch(getRooms(req, query.page, query.location, query.guests, query.category));
+
+    console.log(query);
+
+    console.log(query.guests);
+    console.log(query.category);
+
   } catch (error) {
     console.log({ ERROR_: error.message });
   }

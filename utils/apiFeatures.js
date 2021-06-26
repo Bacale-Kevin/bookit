@@ -10,7 +10,7 @@ class APIFeatures {
       ? {
           address: {
             $regex: this.queryStrFromUrl.location,
-            $options: "i",
+            $options: "i", //small case
           },
         }
       : {};

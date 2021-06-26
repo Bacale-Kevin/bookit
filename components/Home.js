@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import Link from "next/link"
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from 'react-toastify';
 import Pagination from "react-js-pagination"
@@ -22,26 +23,33 @@ const Home = () => {
     }
   })
 
-  let { page = 1 } = router.query //getting the current page number from the query
+  let { location, page = 1 } = router.query //getting the current page number from the query
 
   page = Number(page) //converting the query string into a number
 
   const handlePagination = (pageNumber) => {
     window.location.href = `/?page=${pageNumber}`
   }
+// removing the pagination when there is filtered rooms
+  let count = roomsCount;
+  if(location){
+    count = filteredRoomsCount
+  }
 
 
   return (
     <>
       <section id="rooms" className="container mt-5">
-        <h2 className="mb-3 ml-2 stays-heading">Stays in New York</h2>
-        <a href="#" className="ml-2 back-to-search">
-          <i className="fa fa-arrow-left" /> Back to Search
-        </a>
+        <h2 className="mb-3 ml-2 stays-heading">{location ? `Rooms in ${location}` : 'All Rooms'}</h2>
+        <Link href="/search">
+          <a className="ml-2 back-to-search">
+            <i className="fa fa-arrow-left" /> Back to Search
+          </a>
+        </Link>
         <div className="row">
           {
             rooms && rooms.length === 0 ? (
-              <div className="alert alert-danger">
+              <div className="mt-5 alert alert-danger w-100">
                 <b>No Rooms Found.</b>
               </div>
             ) : (
@@ -56,7 +64,7 @@ const Home = () => {
         </div>
       </section>
       {
-        resPerPage < roomsCount &&
+        resPerPage < count &&
         <div className="mt-5 d-flex justify-content-center">
           <Pagination
             activePage={page}

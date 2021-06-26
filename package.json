@@ -16,11 +16,13 @@
     "@material-ui/icons": "^4.11.2",
     "@material-ui/styles": "^4.11.4",
     "axios": "^0.21.1",
+    "bcryptjs": "^2.4.3",
     "bootstrap": "^5.0.2",
     "framer-motion": "^4.1.17",
     "mongoose": "^5.12.13",
     "next": "10.2.3",
     "next-absolute-url": "^1.2.2",
+    "next-auth": "^3.27.0",
     "next-connect": "^0.10.1",
     "next-redux-wrapper": "^7.0.0",
     "react": "^17.0.2",
@@ -32,6 +34,7 @@
     "react-toastify": "^7.0.4",
     "redux": "^4.1.0",
     "redux-devtools-extension": "^2.13.9",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "validator": "^13.6.0"
   }
 }
