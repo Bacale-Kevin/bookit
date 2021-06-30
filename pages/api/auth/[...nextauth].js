@@ -27,9 +27,9 @@ export default NextAuth({
         if (!user) throw new Error("Invalid email or password");
 
         //* Check if password id correct or not
-        const isPasswordMatch = await user.comparePassword(password);
+        const isPasswordMatched = await user.comparePassword(password);
 
-        if (!isPasswordMatch) throw new Error("Invalid email or password");
+        if (!isPasswordMatched) throw new Error("Invalid email or password");
 
         return Promise.resolve(user);
       },

@@ -15,9 +15,11 @@ const Header = () => {
           </div>
         </div>
         <div className="mt-3 text-center col-3 mt-md-0">
-          <a className="float-right px-4 text-white btn btn-danger login-header-btn">
-            Login
-          </a>
+          <Link href="/login">
+            <a className="float-right px-4 text-white btn btn-danger login-header-btn">
+              Login
+            </a>
+          </Link>
         </div>
       </div>
     </nav>

@@ -18,6 +18,7 @@
     "axios": "^0.21.1",
     "bcryptjs": "^2.4.3",
     "bootstrap": "^5.0.2",
+    "cloudinary": "^1.26.1",
     "framer-motion": "^4.1.17",
     "mongoose": "^5.12.13",
     "next": "10.2.3",
