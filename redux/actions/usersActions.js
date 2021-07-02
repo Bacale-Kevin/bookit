@@ -7,6 +7,9 @@ import {
   LOAD_USER_FAIL,
   LOAD_USER_SUCCESS,
   CLEAR_ERRORS,
+  UPDATE_PROFILE_FAIL,
+  UPDATE_PROFILE_REQUEST,
+  UPDATE_PROFILE_SUCCESS,
 } from "../constants/userConstant";
 
 //* Register user
@@ -52,6 +55,34 @@ export const loadUser = () => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: LOAD_USER_FAIL,
+      error: error.response.data.message,
+    });
+  }
+};
+
+//* Update user
+export const updateProfile = (userData) => async (dispatch) => {
+  try {
+    dispatch({
+      type: UPDATE_PROFILE_REQUEST,
+    });
+
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    const { data } = await axios.put("/api/me/update", userData, config);
+
+    dispatch({
+      type: UPDATE_PROFILE_SUCCESS,
+      payload: data.success,
+    });
+  } catch (error) {
+    //   console.log("Error --> ",error.response.data.message)
+    dispatch({
+      type: UPDATE_PROFILE_FAIL,
       error: error.response.data.message,
     });
   }

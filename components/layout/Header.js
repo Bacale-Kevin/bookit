@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import { loadUser } from "../../redux/actions/usersActions";
-import { signOut } from 'next-auth/client'
+import { signOut } from "next-auth/client";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -15,8 +15,8 @@ const Header = () => {
   }, [dispatch]);
 
   const logoutHandler = () => {
-      signOut()
-  }
+    signOut();
+  };
   return (
     <nav className="navbar row justify-content-center sticky-top">
       <div className="container">
@@ -53,16 +53,24 @@ const Header = () => {
                 <span>{user && user.name}</span>
               </a>
 
-              <div className="dropdown-menu" aria-aria-labelledby="dropDownMenuButton">
-                  <Link href="/bookings/me">
-                    <a className="dropdown-item">My Bookings</a>
-                  </Link>
-                  <Link href="/me/update">
-                    <a className="dropdown-item">Profile</a>
-                  </Link>
-                  <Link href="/">
-                    <a className="dropdown-item text-danger" onClick={logoutHandler}>Logout</a>
-                  </Link>
+              <div
+                className="dropdown-menu"
+                aria-aria-labelledby="dropDownMenuButton"
+              >
+                <Link href="/bookings/me">
+                  <a className="dropdown-item">My Bookings</a>
+                </Link>
+                <Link href="/me/update">
+                  <a className="dropdown-item">Profile</a>
+                </Link>
+                <Link href="/">
+                  <a
+                    className="dropdown-item text-danger"
+                    onClick={logoutHandler}
+                  >
+                    Logout
+                  </a>
+                </Link>
               </div>
             </div>
           ) : (
