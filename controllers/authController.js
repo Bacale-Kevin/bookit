@@ -46,60 +46,22 @@ const registerUser = catchAsyncErrors(async (req, res) => {
   });
 });
 
-//* Create new room => /api/rooms
-const createRoom = catchAsyncErrors(async (req, res) => {
-  const createdRoom = await Room.create(req.body); //this is possible beacuse all the fields in the model are required or have a default value
+
+
+
+
+//* Current user profile => /api/me
+const currentUserProfile = catchAsyncErrors(async (req, res) => {
+  
+    const user = await User.findById(req.user._id)
+
+
   res.status(201).json({
     success: true,
-    createdRoom,
+    user
   });
 });
 
-//* Get sindle room => /api/rooms/:id
-const getSingleRoom = catchAsyncErrors(async (req, res, next) => {
-  const room = await Room.findById(req.query.id);
 
-  if (!room) {
-    return next(new ErrorHandler("Room with this ID not found", 404));
-  }
-  res.status(200).json({
-    success: true,
-    room,
-  });
-});
 
-//* Update a room => /api/rooms/:id
-const updateRoom = catchAsyncErrors(async (req, res) => {
-  let room = await Room.findById(req.query.id);
-
-  if (!room) {
-    return next(new ErrorHandler("Room with this ID not found", 404));
-  }
-
-  room = await Room.findByIdAndUpdate(req.query.id, req.body, {
-    new: true,
-    runValidators: true,
-    useFindAndModify: false,
-  });
-
-  res.status(200).json({
-    success: true,
-    room,
-  });
-});
-
-//* Get single room => /api/rooms/:id
-const deleteRoom = catchAsyncErrors(async (req, res) => {
-  const room = await Room.findById(req.query.id);
-
-  if (!room) {
-    return next(new ErrorHandler("Room with this ID not found", 404));
-  }
-  await room.remove();
-  res.status(200).json({
-    success: true,
-    message: "Room deleted",
-  });
-});
-
-export { registerUser, createRoom, getSingleRoom, updateRoom, deleteRoom };
+export { registerUser, currentUserProfile};

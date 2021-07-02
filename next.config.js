@@ -5,7 +5,9 @@ module.exports = {
 
     CLOUDINARY_CLOUD_NAME: 'bacale',
     CLOUDINARY_API_KEY: '651292771516417',
-    CLOUDINARY_API_SECRET: 'tZIjbiMXNcrNGZFSKaOyPdbdi9Q'
+    CLOUDINARY_API_SECRET: 'tZIjbiMXNcrNGZFSKaOyPdbdi9Q',
+
+    NEXTAUTH_URL: "http://localhost:8080"
   },
 
   images: {

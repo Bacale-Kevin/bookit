@@ -1,10 +1,10 @@
+import axios from "axios";
 import {
   REGISTER_USER_REQUEST,
   REGISTER_USER_FAIL,
   REGISTER_USER_SUCCESS,
   CLEAR_ERRORS,
 } from "../constants/userConstant";
-import axios from "axios";
 
 
 //* Register user
