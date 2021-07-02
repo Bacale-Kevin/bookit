@@ -7,7 +7,6 @@ const isAuthenticatedUser = catchAsyncErrors(async (req, res, next) => {
 
     const session = await getSession({ req })
 
-    console.log({ session });
 
     //which means the user is not logged in
     if (!session) {
